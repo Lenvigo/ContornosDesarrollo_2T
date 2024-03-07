@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="bowlingKata_sol:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/bowlingKata_sol_jar</output-path>
+    <root id="archive" name="bowlingKata_sol.jar">
+      <element id="module-output" name="bowlingKata_sol" />
+    </root>
+  </artifact>
+</component>

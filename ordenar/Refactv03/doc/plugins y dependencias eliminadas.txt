@@ -1,0 +1,25 @@
+<plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${jar.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>edu.gorillas.PinPals</mainClass>
+                            </manifest>
+                            <manifestEntries>
+                                <url>${project.url}</url>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+ <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+        </dependency>
+<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+    </properties>

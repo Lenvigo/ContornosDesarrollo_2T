@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="dnikata_sol:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/dnikata_sol_jar</output-path>
+    <root id="archive" name="dnikata_sol.jar">
+      <element id="module-output" name="dnikata_sol" />
+    </root>
+  </artifact>
+</component>

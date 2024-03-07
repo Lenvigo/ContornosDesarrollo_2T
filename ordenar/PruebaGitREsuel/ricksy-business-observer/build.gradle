@@ -1,0 +1,30 @@
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+application {
+    mainClassName = 'ricksy.business.RicksyBusiness'
+}
+
+
+jar {
+    manifest {
+        attributes( "Manifest-Version": "1.0",
+                    "Created-By": "Gradle",
+                    "Main-Class": "ricksy.business.RicksyBusiness",
+                    "Implementation-Title": "Gradle",
+                    "Implementation-Version": archiveVersion )
+    }
+}
+
+

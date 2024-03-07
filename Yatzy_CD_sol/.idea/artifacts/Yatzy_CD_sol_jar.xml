@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Yatzy_CD_sol:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Yatzy_CD_sol_jar</output-path>
+    <root id="archive" name="Yatzy_CD_sol.jar">
+      <element id="module-output" name="Yatzy_CD_sol" />
+      <element id="module-test-output" name="Yatzy_CD_sol" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,5 @@
+edu\gorilas\App.class
+edu\gorilas\MapLetterCalculator.class
+edu\gorilas\DNI.class
+edu\gorilas\DNILetterCalculator.class
+edu\gorilas\VectorLetterCalculator.class

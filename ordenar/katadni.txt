@@ -1,0 +1,124 @@
+package edu;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class App {
+
+    public static void main(String[] args) {
+     
+        LetterTable letterTable = LetterTable.getInstance();
+     
+        DniValidator validator = new DniValidator();
+
+        DniCalculator calculator = new DniCalculator(validator, letterTable);
+
+        Scanner scanner = new Scanner(System.in);
+        long dniNumber;
+        Dni dni;
+
+        try {
+            System.out.print("Ingrese el numero de DNI: ");
+            dniNumber = scanner.nextLong();
+            dni = calculator.calculateDni(dniNumber);
+            System.out.println("Numero de DNI: " + dni.getNumber());
+            System.out.println("Letra del DNI: " + dni.getLetter());
+
+        } catch (IllegalArgumentException | InputMismatchException e) {
+            System.out.println("El formato del numero de DNI no es valido: " + e.getMessage());
+        } finally{
+                        System.out.println("Fin programa!");
+                }
+
+        }
+}
+package edu;
+public class Dni {
+
+    private final long number;
+    private final char letter;
+
+    public Dni(long number, char letter) {
+        this.number = number;
+        this.letter = letter;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public char getLetter() {
+        return letter;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d-%c", number, letter);
+    }
+}
+package edu;
+import edu.Dni;
+public class DniCalculator implements DniCalculatorInterface {
+
+        private final DniValidator validator;
+        private final LetterTable letterTable;
+
+
+        public DniCalculator(DniValidator validator, LetterTable letterTable) {
+                this.validator = validator;
+                this.letterTable = letterTable;
+        }
+
+
+        public Dni calculateDni(long dniNumber) throws IllegalArgumentException {
+                validator.isValidFormat(dniNumber); // Validar el formato del DNI
+
+                int remainder = (int) (dniNumber % 23);
+                char letter = letterTable.getLetter(remainder);
+                return new Dni(dniNumber, letter);
+        }
+}
+package edu;
+
+public interface DniCalculatorInterface {
+    Dni calculateDni(long dniNumber);
+}
+package edu;
+    public class DniValidator implements DniValidatorInterface {
+
+        private static final String DNI_REGEX = "^\\d{8}$";
+               @Override
+        public boolean isValidFormat(long dniNumber) throws IllegalArgumentException {
+            if (dniNumber < 0 || !String.valueOf(dniNumber).matches(DNI_REGEX)) {
+                throw new IllegalArgumentException("Invalid DNI number: " + dniNumber);
+            }
+            return true;
+        }}
+
+package edu;
+
+public interface DniValidatorInterface {
+    boolean isValidFormat(long dniNumber);
+
+}
+
+package edu;
+public class LetterTable {
+
+    private final char[] LETTERS = "TRWAGMYFPDXBNJZSQVHLCKE".toCharArray();
+
+    private static final LetterTable INSTANCE = new LetterTable();
+
+    private LetterTable() {}
+  
+    public static LetterTable getInstance() {
+               return INSTANCE;
+    }
+
+    public char getLetter(int remainder) {
+        if (remainder < 0 || remainder >= LETTERS.length) {
+            throw new IllegalArgumentException("Invalid remainder: " + remainder);
+        }
+        return LETTERS[remainder];
+    }
+}
